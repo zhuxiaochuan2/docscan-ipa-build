@@ -1,0 +1,10 @@
+build/
+DerivedData/
+.DS_Store
+*.xcuserstate
+xcuserdata/
+*.ipa
+tools/token.txt
+tools/gh_portable/
+*.zip
+*.log
