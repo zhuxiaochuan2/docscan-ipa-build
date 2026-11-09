@@ -1,0 +1,43 @@
+证件扫描 · Windows 一键编译说明
+========================================
+
+你不需要 Mac、不需要 Xcode、不需要装任何开发工具。
+编译会在 GitHub 的云端 macOS 机器上完成，ipa 会自动下载回电脑。
+
+【只需要做一次的三步】
+
+第 1 步  打开这个链接（已自动勾好所需权限）：
+        https://github.com/settings/tokens/new?scopes=repo,workflow&description=DocScan-Build
+        没有 GitHub 账号？先免费注册：https://github.com/signup
+
+第 2 步  拉到页面最底部，点绿色的 Generate token 按钮，
+        复制生成出来的那串以 ghp_ 开头的字符。
+
+第 3 步  双击本文件夹里的 build-ipa.bat，
+        在黑色窗口里粘贴刚才那串字符（输入时不会显示），按回车。
+        然后等着就行，大约 5~10 分钟。
+
+完成后，窗口会告诉你 ipa 的位置：
+        ..\DocScan-unsigned.ipa
+把这个文件传到 iPhone，用 TrollStore 打开，点 Install 即可。
+
+----------------------------------------
+常见问题
+----------------------------------------
+Q: 提示 token 无效？
+   → 确认生成时勾选了 repo 和 workflow 两项；或重新生成一个再粘贴。
+
+Q: 提示编译失败？
+   → 同目录会生成 xcodebuild.log，把里面最后的报错内容发给助手，
+     改完后再双击一次 build-ipa.bat 就行（不用重新填 token）。
+
+Q: 提示下载 artifact 失败？
+   → 窗口会打印一个 github.com/.../actions/runs/... 链接，
+     用浏览器打开，在页面底部 Artifacts 里手动下载 DocScan-unsigned-ipa。
+
+Q: 令牌安全吗？
+   → 只保存在本机 tools/token.txt，已被 .gitignore 排除，不会上传到仓库。
+     用完请删除该文件，并到 GitHub 设置里点 Revoke 撤销这个令牌。
+
+Q: 新账号跑不起来？
+   → GitHub 新账号需要先验证邮箱，去邮箱点一下验证链接再重跑。
